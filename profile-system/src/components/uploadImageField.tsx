@@ -54,10 +54,12 @@ const UploadImageField = (props: { form: FormikProps<userPayload> }) => {
                     />
                 </Box>
             </Grid>
-            <Grid container item justifyContent="center">
+            <Grid container item>
                 <Typography color="error">
                     {form.errors.userProfile?.profileImage}
                 </Typography>
+            </Grid>
+            <Grid container item justifyContent="center">
                 <label htmlFor="contained-button-file">
                     <Input
                         accept="image/*"
