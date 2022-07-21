@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model user {
+    userId String @id @default(uuid())
+
+    username String @unique
+    password String
+
+    isActive Boolean @default(true)
+
+    createAt                DateTime                  @default(now())
+    updateAt                DateTime                  @default(now()) @updatedAt
+    userProfile             userProfile?
+    passwordChangingHistory passwordChangingHistory[]
+}
+
+model userProfile {
+    userProfileId String @id @default(uuid())
+
+    userId String @unique
+    user   user   @relation(fields: [userId], references: [userId])
+
+    firstName String
+    lastName  String @default("")
+
+    profileImage String? @db.LongText
+
+    createAt DateTime @default(now())
+    updateAt DateTime @default(now()) @updatedAt
+}
+
+model passwordChangingHistory {
+    passwordChangingHistory String @id @default(uuid())
+
+    userId String
+    user   user   @relation(fields: [userId], references: [userId])
+
+    oldPassword String
+    newPassword String
+
+    createAt DateTime @default(now())
+    updateAt DateTime @default(now()) @updatedAt
+}
