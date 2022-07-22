@@ -6,7 +6,7 @@ const registerValidation = yup.object({
         .required("Username is required")
         .min(4)
         .max(12)
-        .matches(/^[A-Za-z0-9_.]+$/, {
+        .matches(/^[A-Za-z0-9_]+$/, {
             message: "Username should have only A-Z, a-z, 0-9 and _",
         }),
     password: yup
