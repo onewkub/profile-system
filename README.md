@@ -25,4 +25,4 @@ npm start
 npx prisma migrate deploy
 ```
 
-> note please change connection string on /profile-system-api/.env
+> Note: please change connection string on /profile-system-api/.env
