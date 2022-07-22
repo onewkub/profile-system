@@ -18,3 +18,11 @@ npm run build
 npm run build
 npm start
 ```
+
+
+## backend migration
+```
+npx prisma migrate deploy
+```
+
+> note please change connection string on /profile-system-api/.env
